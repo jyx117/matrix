@@ -35,6 +35,10 @@
             <groupId>com.cloud.matrix</groupId>
             <artifactId>biz</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
