@@ -2,6 +2,7 @@ package com.cloud.matrix.core.model.access;
 
 import com.cloud.matrix.core.enums.UserIdentityType;
 import com.cloud.matrix.core.model.BaseModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * @version $ID: UserDO.java, v0.1 2023-03-01 16:47 michael Exp
  */
 @Data
+@AllArgsConstructor
 public class UserAuth extends BaseModel {
 
     /** 用户id,和user表user_id字段对应 */
