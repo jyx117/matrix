@@ -2,9 +2,8 @@ package com.cloud.matrix.core.service.access;
 
 import com.cloud.matrix.core.model.Convertor;
 import com.cloud.matrix.core.model.access.User;
-import com.cloud.matrix.dal.dao.UserDAO;
+import com.cloud.matrix.dal.dao.access.UserDAO;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 
 /**
@@ -19,6 +18,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
-        return Convertor.INSTANCE.convert2Do(userDAO.selectById(id));
+        return Convertor.INSTANCE.convert2Model(userDAO.selectById(id));
+    }
+
+    @Override
+    public User getByUserId(String userId) {
+        return Convertor.INSTANCE.convert2Model(userDAO.selectByUserId(userId));
+    }
+
+    @Override
+    public long add(User request) {
+        if (null == request) {
+            return -1;
+        }
+        return userDAO.insert(Convertor.INSTANCE.convert2Do(request));
     }
 }

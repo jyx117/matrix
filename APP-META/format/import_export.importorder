@@ -1,0 +1,12 @@
+#Organize Import Order
+#Thu Jul 30 01:10:21 CST 2015
+0=java
+
+1=junit
+
+2=org
+
+3=com
+
+4=javax
+

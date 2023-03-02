@@ -10,5 +10,9 @@ import com.cloud.matrix.core.model.BaseModel;
 @Data
 public class User extends BaseModel {
 
+    private String userId;
+
     private String name;
+
+    private String avatar;
 }

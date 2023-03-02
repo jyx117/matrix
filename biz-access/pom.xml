@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.cloud.matrix</groupId>
-    <artifactId>start</artifactId>
+    <artifactId>biz-access</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>start</name>
-    <description>start</description>
+    <name>biz-access</name>
+    <description>biz-access</description>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -27,31 +27,22 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
             <artifactId>core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>util</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

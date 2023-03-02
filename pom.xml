@@ -24,7 +24,8 @@
 
     <modules>
         <module>start</module>
-        <module>biz</module>
+        <module>biz-tenant</module>
+        <module>biz-access</module>
         <module>common</module>
         <module>util</module>
         <module>core</module>
@@ -47,7 +48,12 @@
             </dependency>
             <dependency>
                 <groupId>com.cloud.matrix</groupId>
-                <artifactId>biz</artifactId>
+                <artifactId>biz-tenant</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cloud.matrix</groupId>
+                <artifactId>biz-access</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>

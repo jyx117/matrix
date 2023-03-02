@@ -1,5 +1,6 @@
-package com.cloud.matrix.dal.model;
+package com.cloud.matrix.dal.model.access;
 
+import com.cloud.matrix.dal.model.BaseDO;
 import lombok.Data;
 
 /**
@@ -9,5 +10,9 @@ import lombok.Data;
 @Data
 public class UserDO extends BaseDO {
 
+    private String userId;
+
     private String name;
+
+    private String avatar;
 }

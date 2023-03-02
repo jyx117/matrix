@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.access.UserAuthDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.access.UserAuthDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="identifier" property="identifier" jdbcType="VARCHAR"/>
+        <result column="identity_type" property="identityType" jdbcType="VARCHAR"/>
+        <result column="credential" property="credential" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="baseSqlResult">
+        select * from access_user_auth where id = #{id}
+    </select>
+
+    <select id="selectByUidIdentity" resultMap="baseSqlResult">
+        select * from access_user_auth where user_id = #{userId} and identifier = #{identifier}
+        and identity_type = #{identityType}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into access_user_auth
+        (user_id, identifier, identity_type, credential)
+        values (#{userId}, #{identifier}, #{identityType}, #{credential})
+    </insert>
+</mapper>

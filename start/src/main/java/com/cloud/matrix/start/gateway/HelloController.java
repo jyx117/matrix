@@ -1,14 +1,14 @@
 package com.cloud.matrix.start.gateway;
 
 import com.alibaba.fastjson.JSON;
-import com.cloud.matrix.biz.HelloService;
+import com.cloud.matrix.biz.access.service.HelloService;
 import com.cloud.matrix.core.model.access.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author yuxin.jyx(落玄)
+ * @author michael
  * @version $Id: HelloController.java, v 0.1 2023-02-28 4:55 PM Michael Exp $$
  */
 @RestController

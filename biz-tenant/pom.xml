@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.cloud.matrix</groupId>
-    <artifactId>start</artifactId>
+    <artifactId>biz-tenant</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>start</name>
-    <description>start</description>
+    <name>biz-tenant</name>
+    <description>biz-tenant</description>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -27,21 +27,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cloud.matrix</groupId>
             <artifactId>core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
         </dependency>
     </dependencies>
 

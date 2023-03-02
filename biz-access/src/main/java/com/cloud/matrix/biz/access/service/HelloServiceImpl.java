@@ -1,4 +1,4 @@
-package com.cloud.matrix.biz;
+package com.cloud.matrix.biz.access.service;
 
 import com.cloud.matrix.core.model.access.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.cloud.matrix.core.service.access.UserService;
 
 /**
- * @author yuxin.jyx(落玄)
+ * @author michael
  * @version $Id: HelloServiceImpl.java, v 0.1 2023-02-28 5:02 PM Michael Exp $$
  */
 @Service
