@@ -115,6 +115,6 @@ CREATE TABLE `access_role_permission`
     `gmt_create`      timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `gmt_modified`    timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     PRIMARY KEY (`id`),
-    UNIQUE KEY `uk_r_p_t` (`role_code`, `permission_code`, `permission_type`)
+    UNIQUE KEY `uk_r_p_t` (`role_code`, `permission_code`, `permission_type`, `tenant`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='role_permission'
 ;

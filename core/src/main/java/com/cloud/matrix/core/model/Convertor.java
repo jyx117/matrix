@@ -2,14 +2,8 @@ package com.cloud.matrix.core.model;
 
 import com.cloud.matrix.core.enums.PermissionType;
 import com.cloud.matrix.core.enums.UserIdentityType;
-import com.cloud.matrix.core.model.access.Permission;
-import com.cloud.matrix.core.model.access.Role;
-import com.cloud.matrix.core.model.access.User;
-import com.cloud.matrix.core.model.access.UserAuth;
-import com.cloud.matrix.dal.model.access.PermissionDO;
-import com.cloud.matrix.dal.model.access.RoleDO;
-import com.cloud.matrix.dal.model.access.UserAuthDO;
-import com.cloud.matrix.dal.model.access.UserDO;
+import com.cloud.matrix.core.model.access.*;
+import com.cloud.matrix.dal.model.access.*;
 import com.cloud.matrix.dal.model.TenantDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -66,4 +60,12 @@ public interface Convertor {
         }
         return null;
     }
+
+    UserRole convert2Model(UserRoleDO request);
+
+    UserRoleDO convert2Do(UserRole request);
+
+    RolePermission convert2Model(RolePermissionDO request);
+
+    RolePermissionDO convert2Do(RolePermission request);
 }

@@ -37,11 +37,21 @@
         </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>biz-tenant</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+
+        <!-- valid -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
         </dependency>
     </dependencies>
 

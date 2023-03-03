@@ -32,6 +32,10 @@
 			<groupId>com.cloud.matrix</groupId>
 			<artifactId>dal</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.cloud.matrix</groupId>
+			<artifactId>util</artifactId>
+		</dependency>
 
 		<!-- lombok -->
 		<dependency>
