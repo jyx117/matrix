@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <!--    指定日志记录存放的目录        -->
+        <Property name="logDir">${spring:log.dir}</Property>
+        <!--    指定日志的输出格式       -->
+        <Property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg %n</Property>
+        <!--    指定应用日志级别    -->
+        <Property name="logLevel">${spring:log.level}</Property>
+        <!--    指定日志文件保存天数    -->
+        <Property name="maxLogFileCount">15</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="STDOUT-APPENDER" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8">
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <!--   错误日志，记录非预期的错误日志，记录该文件错误日志会触发告警     -->
+        <RollingFile name="ERROR-APPENDER" fileName="${logDir}/common-error.log"
+                     filePattern="${logDir}/common-error.log.%d{yyyy-MM-dd}"
+                     append="true">
+            <PatternLayout charset="UTF-8">
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+            <!--    最多保存max个文件  -->
+            <DefaultRolloverStrategy max="${maxLogFileCount}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+        <!-- 应用默认日志 -->
+        <RollingFile name="APP-DEFAULT-APPENDER" fileName="${logDir}/app-default.log"
+                     filePattern="${logDir}/app-default.log.%d{yyyy-MM-dd}"
+                     append="true">
+            <PatternLayout charset="UTF-8">
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+            <DefaultRolloverStrategy/>
+        </RollingFile>
+
+        <!-- access日志 -->
+        <RollingFile name="ACCESS" fileName="${logDir}/access.log"
+                     filePattern="${logDir}/access.log.%d{yyyy-MM-dd}"
+                     append="true">
+            <PatternLayout charset="UTF-8">
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+            <DefaultRolloverStrategy/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!--   没有在前面定义的包路径下的日志记录到这里     -->
+        <Logger name="com.cloud.matrix" additivity="false" level="${logLevel}">
+            <AppenderRef ref="APP-DEFAULT-APPENDER"/>
+            <AppenderRef ref="ERROR-APPENDER"/>
+            <AppenderRef ref="STDOUT-APPENDER"/>
+        </Logger>
+
+        <!--    业务日志记录器        -->
+        <Logger name="ACCESS" additivity="false" level="${logLevel}">
+            <!--      不要在多个日志文件中记录日志，因为查看日志的时候不方便          -->
+            <AppenderRef ref="ACCESS"/>
+            <AppenderRef ref="STDOUT-APPENDER"/>
+        </Logger>
+
+        <Root level="${logLevel}">
+            <AppenderRef ref="APP-DEFAULT-APPENDER"/>
+            <AppenderRef ref="ERROR-APPENDER"/>
+            <AppenderRef ref="STDOUT-APPENDER"/>
+        </Root>
+    </Loggers>
+</Configuration>

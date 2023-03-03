@@ -6,5 +6,10 @@ package com.cloud.matrix.common.constant;
  */
 public class LogConstant {
 
-    public static final String ACCESS_LOG = "ACCESS-LOG";
+    /** access业务日志 */
+    public static final String ACCESS_LOG       = "ACCESS-LOG";
+
+    /** 报错异常日志 */
+    public static final String COMMON_ERROR_LOG = "COMMON-ERROR-LOG";
+
 }

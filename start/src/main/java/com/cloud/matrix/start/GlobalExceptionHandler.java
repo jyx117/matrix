@@ -4,6 +4,9 @@ import com.cloud.matrix.common.enums.ErrorCode;
 import com.cloud.matrix.common.exception.BizException;
 import com.cloud.matrix.common.exception.SystemException;
 import com.cloud.matrix.common.result.BaseResult;
+import com.cloud.matrix.util.LogUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,17 +26,21 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     // 业务异常处理
     @ExceptionHandler(value = BizException.class)
     @ResponseBody
     public BaseResult bizErrorHandler(HttpServletRequest request, BizException e) {
+        LogUtil.error(logger, e);
         return BaseResult.error(e.getCode(), e.getMessage());
     }
 
     // 系统异常处理
-    @ExceptionHandler(value = BizException.class)
+    @ExceptionHandler(value = SystemException.class)
     @ResponseBody
     public BaseResult sysErrorHandler(HttpServletRequest request, SystemException e) {
+        LogUtil.error(logger, e);
         return BaseResult.error(ErrorCode.SYSTEM_COMMON_EXCEPTION.getCode(),
             ErrorCode.SYSTEM_COMMON_EXCEPTION.getMessage());
     }
@@ -42,6 +49,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public BaseResult defaultErrorHandler(HttpServletRequest request, Exception e) {
+        LogUtil.error(logger, e);
         return BaseResult.error(ErrorCode.UNKNOWN_EXCEPTION.getCode(),
             ErrorCode.UNKNOWN_EXCEPTION.getMessage());
     }
@@ -50,6 +58,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BindException.class)
     @ResponseBody
     public BaseResult bindExceptionHandler(HttpServletRequest request, BindException e) {
+        LogUtil.error(logger, e);
         return BaseResult.error(ErrorCode.GET_PARAM_NOT_VALID.getCode(),
             ErrorCode.GET_PARAM_NOT_VALID.getMessage());
     }
@@ -59,6 +68,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public BaseResult constraintViolationExceptionHandler(HttpServletRequest request,
                                                           ConstraintViolationException e) {
+        LogUtil.error(logger, e);
         String collect = e.getConstraintViolations().stream().filter(Objects::nonNull)
             .map(cv -> cv == null ? "null" : cv.getPropertyPath() + ": " + cv.getMessage())
             .collect(Collectors.joining(", "));
@@ -71,6 +81,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public BaseResult methodArgumentNotValidExceptionHandler(HttpServletRequest request,
                                                              MethodArgumentNotValidException e) {
+        LogUtil.error(logger, e);
         if (e.getBindingResult() != null
             && !CollectionUtils.isEmpty(e.getBindingResult().getAllErrors())) {
             return BaseResult
