@@ -80,6 +80,12 @@
 
 
             <!-- 基础依赖start -->
+            <!-- security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-crypto</artifactId>
+                <version>5.7.1</version>
+            </dependency>
             <!-- valid -->
             <dependency>
                 <groupId>javax.validation</groupId>

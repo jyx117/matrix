@@ -3,6 +3,7 @@ package com.cloud.matrix.start;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(scanBasePackages = {"com.cloud.matrix"})
 @MapperScan({"com.cloud.matrix.dal.dao"})

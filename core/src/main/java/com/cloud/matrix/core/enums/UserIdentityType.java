@@ -2,6 +2,7 @@ package com.cloud.matrix.core.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.util.StringUtils;
 
 /**
  * @author michael
@@ -21,4 +22,13 @@ public enum UserIdentityType {
 
     private String type;
     private String desc;
+
+    public static UserIdentityType find(String type) {
+        for (UserIdentityType item : values()) {
+            if (item.getType().equalsIgnoreCase(type)) {
+                return item;
+            }
+        }
+        return null;
+    }
 }
