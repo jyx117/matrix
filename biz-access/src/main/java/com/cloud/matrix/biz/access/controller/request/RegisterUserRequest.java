@@ -18,6 +18,8 @@ public class RegisterUserRequest {
     @Size(max = 32, message = "用户名最长不能超过32")
     private String name;
 
+    private String avatar;
+
     /** 用户注册类型 */
     @NotBlank(message = "用户注册类型不能为空")
     private String identityType;

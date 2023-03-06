@@ -1,6 +1,5 @@
 package com.cloud.matrix.core.service.access;
 
-import com.cloud.matrix.core.model.access.User;
 import com.cloud.matrix.core.model.access.UserAuth;
 
 /**
@@ -11,7 +10,7 @@ public interface UserAuthService {
 
     public UserAuth getById(Long id);
 
-    public User getByUidIdentity(String userId);
+    public UserAuth getByUidIdentity(String userId, String identifier, String identityType);
 
-    public long add(User request);
+    public long add(UserAuth request);
 }
