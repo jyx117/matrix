@@ -28,7 +28,6 @@
         select *
         from access_user_role
         where user_id = #{userId}
-          and identity_type = #{identityType}
     </select>
 
     <insert id="insert">

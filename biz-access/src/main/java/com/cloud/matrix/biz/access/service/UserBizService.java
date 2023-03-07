@@ -1,6 +1,8 @@
 package com.cloud.matrix.biz.access.service;
 
+import com.cloud.matrix.biz.access.controller.request.LoginRequest;
 import com.cloud.matrix.biz.access.controller.request.RegisterUserRequest;
+import com.cloud.matrix.biz.access.model.UserDetail;
 
 /**
  * @author michael
@@ -14,4 +16,18 @@ public interface UserBizService {
      * @return
      */
     public Long register(RegisterUserRequest request);
+
+    /**
+     * 登录
+     * @param request
+     * @return
+     */
+    public UserDetail login(LoginRequest request);
+
+    /**
+     * 根据userId查询用户详情
+     * @param userId
+     * @return
+     */
+    UserDetail queryUserDetail(String userId);
 }

@@ -10,7 +10,9 @@ public interface UserAuthService {
 
     public UserAuth getById(Long id);
 
-    public UserAuth getByUidIdentity(String userId, String identifier, String identityType);
+    public UserAuth getByUserId(String userId);
+
+    public UserAuth getByIdentity(String identifier, String identityType);
 
     public long add(UserAuth request);
 }

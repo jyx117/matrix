@@ -45,7 +45,8 @@ CREATE TABLE `access_user_auth`
     `gmt_create`    timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `gmt_modified`  timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     PRIMARY KEY (`id`),
-    UNIQUE KEY `uk_uid_id_idt` (`user_id`,`identifier`,`identity_type`)
+    UNIQUE KEY `uk_uid` (`user_id`),
+    UNIQUE KEY `uk_id_idt` (`identifier`,`identity_type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=385 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户鉴权表'
 ;
 

@@ -1,14 +1,12 @@
 package com.cloud.matrix.biz.access.controller.request;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 /**
  * @author michael
@@ -18,13 +16,9 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterUserRequest {
+public class LoginRequest {
 
-    @NotBlank(message = "用户名不能为空")
-    @Size(max = 32, message = "用户名最长不能超过32")
     private String name;
-
-    private String avatar;
 
     /** 用户注册类型 */
     @NotBlank(message = "用户注册类型不能为空")

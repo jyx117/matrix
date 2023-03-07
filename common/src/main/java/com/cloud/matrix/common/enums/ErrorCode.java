@@ -26,6 +26,23 @@ public enum ErrorCode {
 
     BIZ_UN_SUPPORT_IDENTITY_TYPE("BIZ_0002", "不支持的用户注册类型"),
 
+    BIZ_NOT_LOGIN("BIZ_0003", "用户未登录"),
+
+    BIZ_LOGIN_EXCEPTION("BIZ_0004", "登录异常"),
+
+    BIZ_TOKEN_INVALID("BIZ_0005", "用户登录token不合法"),
+
+    BIZ_TOKEN_EXPIRED("BIZ_0006", "token过期"),
+
+    BIZ_USER_NOT_EXIST("BIZ_0007", "用户不存在"),
+
+    BIZ_TOKEN_VERIFY_FAILED("BIZ_0008", "token校验失败"),
+
+    BIZ_CREDENTIAL_NOT_BLANK("BIZ_0009", "用户密码不能为空"),
+
+    BIZ_PASSWORD_ERROR("BIZ_0010", "用户密码错误"),
+
+
     /** 业务异常end */
 
     ;

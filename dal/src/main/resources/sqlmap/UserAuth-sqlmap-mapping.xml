@@ -12,12 +12,22 @@
     </resultMap>
 
     <select id="selectById" resultMap="baseSqlResult">
-        select * from access_user_auth where id = #{id}
+        select *
+        from access_user_auth
+        where id = #{id}
     </select>
 
-    <select id="selectByUidIdentity" resultMap="baseSqlResult">
-        select * from access_user_auth where user_id = #{userId} and identifier = #{identifier}
-        and identity_type = #{identityType}
+    <select id="selectByUserId" resultMap="baseSqlResult">
+        select *
+        from access_user_auth
+        where user_id = #{userId}
+    </select>
+
+    <select id="selectByIdentity" resultMap="baseSqlResult">
+        select *
+        from access_user_auth
+        where identifier = #{identifier}
+          and identity_type = #{identityType}
     </select>
 
     <insert id="insert">

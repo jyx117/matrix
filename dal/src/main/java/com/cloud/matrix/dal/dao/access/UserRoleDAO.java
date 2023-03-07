@@ -22,6 +22,6 @@ public interface UserRoleDAO {
     UserRoleDO selectByUnique(@Param("userId") String userId, @Param("roleCode") String roleCode,
                               @Param("tenant") String tenant);
 
-    List<UserRoleDO> selectByUserId(@Param("userId") String userId, @Param("tenant") String tenant);
+    List<UserRoleDO> selectByUserId(@Param("userId") String userId);
 
 }

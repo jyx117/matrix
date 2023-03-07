@@ -5,10 +5,10 @@ import com.cloud.matrix.core.enums.UserIdentityType;
 import com.cloud.matrix.core.model.access.*;
 import com.cloud.matrix.dal.model.access.*;
 import com.cloud.matrix.dal.model.TenantDO;
+import com.cloud.matrix.util.StringUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.springframework.util.StringUtils;
 
 /**
  * @author michael
@@ -35,7 +35,7 @@ public interface Convertor {
 
     default UserIdentityType convertUserIdentityType(String identityType) {
         for (UserIdentityType item : UserIdentityType.values()) {
-            if (item.name().equals(identityType)) {
+            if (StringUtil.equalsIgnoreCase(item.name(), identityType)) {
                 return item;
             }
         }
@@ -54,7 +54,7 @@ public interface Convertor {
 
     default PermissionType convertPermissionType(String type) {
         for (PermissionType item : PermissionType.values()) {
-            if (item.name().equals(type)) {
+            if (StringUtil.equalsIgnoreCase(item.name(), type)) {
                 return item;
             }
         }

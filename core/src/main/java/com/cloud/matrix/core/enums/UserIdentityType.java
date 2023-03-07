@@ -18,6 +18,8 @@ public enum UserIdentityType {
 
     PHONE("PHONE", "电话"),
 
+    PASSWORD("PASSWORD", "密码"),
+
     ;
 
     private String type;

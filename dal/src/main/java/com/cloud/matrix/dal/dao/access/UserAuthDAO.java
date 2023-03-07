@@ -15,8 +15,9 @@ public interface UserAuthDAO {
 
     UserAuthDO selectById(@Param("id") Long id);
 
-    UserAuthDO selectByUidIdentity(@Param("userId") String userId,
-                                   @Param("identifier") String identifier,
-                                   @Param("identityType") String identityType);
+    UserAuthDO selectByUserId(@Param("userId") String userId);
+
+    UserAuthDO selectByIdentity(@Param("identifier") String identifier,
+                                @Param("identityType") String identityType);
 
 }

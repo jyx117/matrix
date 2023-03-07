@@ -4,7 +4,6 @@ import com.cloud.matrix.core.model.access.UserAuth;
 import com.cloud.matrix.dal.dao.access.UserAuthDAO;
 import org.springframework.stereotype.Service;
 import com.cloud.matrix.core.model.Convertor;
-
 import javax.annotation.Resource;
 
 /**
@@ -23,9 +22,14 @@ public class UserAuthServiceImpl implements UserAuthService {
     }
 
     @Override
-    public UserAuth getByUidIdentity(String userId, String identifier, String identityType) {
+    public UserAuth getByUserId(String userId) {
+        return Convertor.INSTANCE.convert2Model(userAuthDAO.selectByUserId(userId));
+    }
+
+    @Override
+    public UserAuth getByIdentity(String identifier, String identityType) {
         return Convertor.INSTANCE
-            .convert2Model(userAuthDAO.selectByUidIdentity(userId, identifier, identityType));
+            .convert2Model(userAuthDAO.selectByIdentity(identifier, identityType));
     }
 
     @Override
