@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.account.RamRoleDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.RamRoleDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="arn" property="arn" jdbcType="VARCHAR"/>
+        <result column="session_timeout" property="sessionTimeout" jdbcType="INT"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
+        <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectByName" resultMap="baseSqlResult">
+        select *
+        from account_ram_role
+        where 1 = 1
+          and name = #{name}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByArn" resultMap="baseSqlResult">
+        select *
+        from account_ram_role
+        where 1 = 1
+          and arn = #{arn}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByProviderUid" resultMap="baseSqlResult">
+        select *
+        from account_ram_role
+        where 1 = 1
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into account_ram_role
+        (name, arn, session_timeout, comment, create_time, provider_uid, tenant)
+        values (#{name}, #{arn}, #{sessionTimeout}, #{comment}, #{createTime}, #{providerUid}, #{tenant})
+    </insert>
+</mapper>

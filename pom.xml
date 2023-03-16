@@ -30,6 +30,7 @@
         <module>util</module>
         <module>core</module>
         <module>dal</module>
+        <module>biz-account</module>
     </modules>
 
     <dependencyManagement>
@@ -54,6 +55,11 @@
             <dependency>
                 <groupId>com.cloud.matrix</groupId>
                 <artifactId>biz-access</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cloud.matrix</groupId>
+                <artifactId>biz-account</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>

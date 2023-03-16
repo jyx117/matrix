@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.account.RamGroupDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.RamGroupDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="show_name" property="showName" jdbcType="VARCHAR"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
+        <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectByName" resultMap="baseSqlResult">
+        select *
+        from account_ram_group
+        where 1 = 1
+          and name = #{name}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByProviderUid" resultMap="baseSqlResult">
+        select *
+        from account_ram_group
+        where 1 = 1
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into account_ram_group
+        (name, show_name, comment, create_time, provider_uid, tenant)
+        values (#{name}, #{showName}, #{comment}, #{createTime}, #{providerUid}, #{tenant})
+    </insert>
+</mapper>

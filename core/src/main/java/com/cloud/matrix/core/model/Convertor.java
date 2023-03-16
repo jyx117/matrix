@@ -1,9 +1,12 @@
 package com.cloud.matrix.core.model;
 
+import com.cloud.matrix.core.enums.CloudSourceType;
 import com.cloud.matrix.core.enums.PermissionType;
 import com.cloud.matrix.core.enums.UserIdentityType;
 import com.cloud.matrix.core.model.access.*;
+import com.cloud.matrix.core.model.account.*;
 import com.cloud.matrix.dal.model.access.*;
+import com.cloud.matrix.dal.model.account.*;
 import com.cloud.matrix.dal.model.TenantDO;
 import com.cloud.matrix.util.StringUtil;
 import org.mapstruct.Mapper;
@@ -68,4 +71,55 @@ public interface Convertor {
     RolePermission convert2Model(RolePermissionDO request);
 
     RolePermissionDO convert2Do(RolePermission request);
+
+    @Mapping(source = "cloudSource", target = "cloudSource")
+    Provider convert2Model(ProviderDO request);
+
+    @Mapping(source = "cloudSource", target = "cloudSource")
+    ProviderDO convert2Do(Provider request);
+
+    default CloudSourceType convertCloudSourceType(String type) {
+        for (CloudSourceType item : CloudSourceType.values()) {
+            if (StringUtil.equalsIgnoreCase(item.name(), type)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    RamAccount convert2Model(RamAccountDO request);
+
+    RamAccountDO convert2Do(RamAccount request);
+
+    AccountConfig convert2Model(AccountConfigDO request);
+
+    AccountConfigDO convert2Do(AccountConfig request);
+
+    RamGroup convert2Model(RamGroupDO request);
+
+    RamGroupDO convert2Do(RamGroup request);
+
+    AccountGroup convert2Model(AccountGroupDO request);
+
+    AccountGroupDO convert2Do(AccountGroup request);
+
+    RamRole convert2Model(RamRoleDO request);
+
+    RamRoleDO convert2Do(RamRole request);
+
+    Policy convert2Model(PolicyDO request);
+
+    PolicyDO convert2Do(Policy request);
+
+    AccountPolicy convert2Model(AccountPolicyDO request);
+
+    AccountPolicyDO convert2Do(AccountPolicy request);
+
+    GroupPolicy convert2Model(GroupPolicyDO request);
+
+    GroupPolicyDO convert2Do(GroupPolicy request);
+
+    RolePolicy convert2Model(RolePolicyDO request);
+
+    RolePolicyDO convert2Do(RolePolicy request);
 }

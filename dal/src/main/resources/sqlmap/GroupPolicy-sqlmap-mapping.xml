@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.account.GroupPolicyDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.GroupPolicyDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
+        <result column="policy_name" property="policyName" jdbcType="VARCHAR"/>
+        <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
+        <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectUnique" resultMap="baseSqlResult">
+        select *
+        from account_group_policy
+        where 1 = 1
+          and group_name = #{groupName}
+          and policy_name = #{policyName}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByGroupName" resultMap="baseSqlResult">
+        select *
+        from account_group_policy
+        where 1 = 1
+          and group_name = #{groupName}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into account_group_policy
+        (group_name, policy_name, provider_uid, tenant)
+        values (#{groupName}, #{policyName}, #{providerUid}, #{tenant})
+    </insert>
+</mapper>

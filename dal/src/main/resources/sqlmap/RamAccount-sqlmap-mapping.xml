@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.account.RamAccountDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.RamAccountDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
+        <result column="show_name" property="showName" jdbcType="VARCHAR"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="mail" property="mail" jdbcType="VARCHAR"/>
+        <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
+        <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectByLoginName" resultMap="baseSqlResult">
+        select *
+        from account_ram_account
+        where 1 = 1
+          and login_name = #{loginName}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByName" resultMap="baseSqlResult">
+        select *
+        from account_ram_account
+        where 1 = 1
+          and name = #{name}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByUid" resultMap="baseSqlResult">
+        select *
+        from account_ram_account
+        where 1 = 1
+          and uid = #{uid}
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <select id="selectByProviderUid" resultMap="baseSqlResult">
+        select *
+        from account_ram_account
+        where 1 = 1
+          and provider_uid = #{providerUid}
+          and tenant = #{tenant}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into account_provider
+        (uid, name, login_name, show_name, comment, create_time, phone, mail, provider_uid, tenant)
+        values (#{uid}, #{name}, #{loginName}, #{showName}, #{comment}, #{createTime}, #{phone}, #{mail},
+        #{providerUid}, #{tenant})
+    </insert>
+</mapper>

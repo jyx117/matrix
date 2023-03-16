@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.matrix.dal.dao.account.ProviderDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.ProviderDO">
+        <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="cloud_source" property="cloudSource" jdbcType="VARCHAR"/>
+        <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectUnique" resultMap="baseSqlResult">
+        select *
+        from account_provider
+        where 1 = 1
+          and uid = #{uid}
+          and cloud_source = #{cloudSource}
+          and tenant = #{tenant}
+    </select>
+
+    <insert id="insert">
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into account_provider
+        (uid, name, cloud_source, tenant)
+        values (#{uid}, #{name}, #{cloudSource}, #{tenant})
+    </insert>
+</mapper>
