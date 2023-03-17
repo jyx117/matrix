@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.matrix.dal.dao.account.AccountConfigDAO">
-    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.AccountConfigDO">
+<mapper namespace="com.cloud.matrix.dal.dao.account.ProviderConfigDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.ProviderConfigDO">
         <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
-        <result column="account_uid" property="accountUid" jdbcType="VARCHAR"/>
         <result column="k" property="k" jdbcType="VARCHAR"/>
         <result column="v" property="v" jdbcType="VARCHAR"/>
         <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
@@ -16,19 +15,17 @@
 
     <select id="selectUnique" resultMap="baseSqlResult">
         select *
-        from account_account_config
+        from account_provider_config
         where 1 = 1
-          and account_uid = #{accountUid}
           and k = #{k}
           and provider_uid = #{providerUid}
           and tenant = #{tenant}
     </select>
 
-    <select id="selectByAccountUid" resultMap="baseSqlResult">
+    <select id="selectByProviderUid" resultMap="baseSqlResult">
         select *
-        from account_account_config
+        from account_provider_config
         where 1 = 1
-          and account_uid = #{accountUid}
           and provider_uid = #{providerUid}
           and tenant = #{tenant}
     </select>
@@ -37,8 +34,8 @@
         <selectKey resultType="long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into account_account_config
-        (account_uid, k, v, provider_uid, tenant, level, description)
-        values (#{accountUid}, #{k}, #{v}, #{providerUid}, #{tenant}, #{level}, #{description})
+        insert into account_provider_config
+        (k, v, provider_uid, tenant, level, description)
+        values (#{k}, #{v}, #{providerUid}, #{tenant}, #{level}, #{description})
     </insert>
 </mapper>

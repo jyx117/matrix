@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.matrix.dal.dao.account.AccountConfigDAO">
-    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.AccountConfigDO">
+<mapper namespace="com.cloud.matrix.dal.dao.account.AccountUserDAO">
+    <resultMap id="baseSqlResult" type="com.cloud.matrix.dal.model.account.AccountUserDO">
         <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
         <result column="account_uid" property="accountUid" jdbcType="VARCHAR"/>
-        <result column="k" property="k" jdbcType="VARCHAR"/>
-        <result column="v" property="v" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
         <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
-        <result column="level" property="level" jdbcType="TINYINT"/>
-        <result column="description" property="description" jdbcType="VARCHAR"/>
         <result column="tenant" property="tenant" jdbcType="VARCHAR"/>
         <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
         <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
@@ -16,19 +14,19 @@
 
     <select id="selectUnique" resultMap="baseSqlResult">
         select *
-        from account_account_config
+        from account_account_user
         where 1 = 1
           and account_uid = #{accountUid}
-          and k = #{k}
+          and user_id = #{userId}
           and provider_uid = #{providerUid}
           and tenant = #{tenant}
     </select>
 
-    <select id="selectByAccountUid" resultMap="baseSqlResult">
+    <select id="selectByUserIdAndProviderUid" resultMap="baseSqlResult">
         select *
-        from account_account_config
+        from account_account_user
         where 1 = 1
-          and account_uid = #{accountUid}
+          and user_id = #{userId}
           and provider_uid = #{providerUid}
           and tenant = #{tenant}
     </select>
@@ -37,8 +35,8 @@
         <selectKey resultType="long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into account_account_config
-        (account_uid, k, v, provider_uid, tenant, level, description)
-        values (#{accountUid}, #{k}, #{v}, #{providerUid}, #{tenant}, #{level}, #{description})
+        insert into account_account_user
+        (account_uid, user_id, type, provider_uid, tenant)
+        values (#{accountUid}, #{userId}, #{type}, #{providerUid}, #{tenant})
     </insert>
 </mapper>

@@ -37,6 +37,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- opensaml -->
+        <dependency>
+            <groupId>org.opensaml</groupId>
+            <artifactId>opensaml</artifactId>
+        </dependency>
         <!-- jwt -->
         <dependency>
             <groupId>com.auth0</groupId>

@@ -1,5 +1,6 @@
 package com.cloud.matrix.core.model;
 
+import com.cloud.matrix.core.enums.AccountUserType;
 import com.cloud.matrix.core.enums.CloudSourceType;
 import com.cloud.matrix.core.enums.PermissionType;
 import com.cloud.matrix.core.enums.UserIdentityType;
@@ -87,6 +88,10 @@ public interface Convertor {
         return null;
     }
 
+    ProviderConfig convert2Model(ProviderConfigDO request);
+
+    ProviderConfigDO convert2Do(ProviderConfig request);
+
     RamAccount convert2Model(RamAccountDO request);
 
     RamAccountDO convert2Do(RamAccount request);
@@ -94,6 +99,21 @@ public interface Convertor {
     AccountConfig convert2Model(AccountConfigDO request);
 
     AccountConfigDO convert2Do(AccountConfig request);
+
+    @Mapping(source = "type", target = "type")
+    AccountUser convert2Model(AccountUserDO request);
+
+    @Mapping(source = "type", target = "type")
+    AccountUserDO convert2Do(AccountUser request);
+
+    default AccountUserType convertAccountUserType(String type) {
+        for (AccountUserType item : AccountUserType.values()) {
+            if (StringUtil.equalsIgnoreCase(item.name(), type)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
     RamGroup convert2Model(RamGroupDO request);
 

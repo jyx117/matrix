@@ -87,6 +87,15 @@ public class BizException extends RuntimeException {
 
     /**
      * @param errorCode ErrorCode
+     */
+    public BizException(ErrorCode errorCode, String bizMsg) {
+        super(errorCode.getMessage());
+        this.code = errorCode.getCode();
+        this.bizMsg = bizMsg;
+    }
+
+    /**
+     * @param errorCode ErrorCode
      * @param cause     错误原因
      */
     public BizException(ErrorCode errorCode, String bizMsg, Throwable cause) {

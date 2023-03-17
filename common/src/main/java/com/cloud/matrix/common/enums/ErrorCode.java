@@ -42,6 +42,18 @@ public enum ErrorCode {
 
     BIZ_PASSWORD_ERROR("BIZ_0010", "用户密码错误"),
 
+    /** account模块start */
+    BIZ_ACCOUNT_PROVIDER_UID_NOT_EXIST("BIZ_0100", "主账号不存在"),
+
+    BIZ_ACCOUNT_ACCOUNT_UID_NOT_EXIST("BIZ_0101", "子账号不存在"),
+
+    BIZ_ACCOUNT_NO_SUPPORT_CLOUD_SOURCE("BIZ_0102", "不支持的云类型"),
+
+    BIZ_ACCOUNT_NO_ACCOUNT_AUTH("BIZ_0103", "没有子账号的登录权限"),
+
+    BIZ_ACCOUNT_PROVIDER_HAS_NO_SITE("BIZ_0104", "主账号无站点信息"),
+
+    /** account模块end */
 
     /** 业务异常end */
 

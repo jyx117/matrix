@@ -53,6 +53,10 @@
 
         <dependency>
             <groupId>com.cloud.matrix</groupId>
+            <artifactId>biz-account</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.matrix</groupId>
             <artifactId>biz-access</artifactId>
         </dependency>
         <dependency>

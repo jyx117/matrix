@@ -5,7 +5,7 @@
         <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="arn" property="arn" jdbcType="VARCHAR"/>
-        <result column="session_timeout" property="sessionTimeout" jdbcType="INT"/>
+        <result column="session_timeout" property="sessionTimeout" jdbcType="INTEGER"/>
         <result column="comment" property="comment" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="provider_uid" property="providerUid" jdbcType="VARCHAR"/>
