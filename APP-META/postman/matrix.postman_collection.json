@@ -1,0 +1,222 @@
+{
+	"id": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+	"name": "matrix",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "account",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"order": [
+				"9a05abad-e7b6-81bb-610a-4b691856ab56"
+			],
+			"owner": "1428004",
+			"folders_order": [],
+			"id": "99882f71-8d15-026f-5f75-e5cd98dfe6c3"
+		},
+		{
+			"name": "user",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"order": [
+				"512c0312-9605-6dc0-6746-0ac842015eb0",
+				"7f2277ef-1e51-8c25-f0f4-663e7849b643",
+				"24cd5009-4829-06fa-f337-14580cb7deaa"
+			],
+			"owner": "1428004",
+			"folders_order": [],
+			"id": "56267fb9-f0ee-8681-403d-c3ea6cc88294"
+		}
+	],
+	"folders_order": [
+		"56267fb9-f0ee-8681-403d-c3ea6cc88294",
+		"99882f71-8d15-026f-5f75-e5cd98dfe6c3"
+	],
+	"timestamp": 1678173788287,
+	"owner": "1428004",
+	"public": false,
+	"requests": [
+		{
+			"id": "24cd5009-4829-06fa-f337-14580cb7deaa",
+			"headers": "tenant-header: cm\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "tenant-header",
+					"value": "cm",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/gateway/access/login.json",
+			"folder": "56267fb9-f0ee-8681-403d-c3ea6cc88294",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1678181414654,
+			"name": "用户登录",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"name2\",\n\t\"credential\": \"xxx1\",\n\t\"identityType\": \"PASSWORD\"\n}"
+		},
+		{
+			"id": "512c0312-9605-6dc0-6746-0ac842015eb0",
+			"headers": "tenant-header: cm\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "tenant-header",
+					"value": "cm",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/gateway/access/getUser.json?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ1aWQxI1BBU1NXT1JEIyMyMDIzLzAzLzA3MTc6MzE6MzgifQ.v8PKdg6JlhLGDWftdJ9OOqgd2k6_rdzEsUsieo5P-nw\n",
+			"folder": "56267fb9-f0ee-8681-403d-c3ea6cc88294",
+			"queryParams": [
+				{
+					"key": "token",
+					"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ1aWQxI1BBU1NXT1JEIyMyMDIzLzAzLzA3MTc6MzE6MzgifQ.v8PKdg6JlhLGDWftdJ9OOqgd2k6_rdzEsUsieo5P-nw\n",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1678176384475,
+			"name": "获取用户信息",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "7f2277ef-1e51-8c25-f0f4-663e7849b643",
+			"headers": "tenant-header: cm\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "tenant-header",
+					"value": "cm",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/gateway/access/register.json",
+			"folder": "56267fb9-f0ee-8681-403d-c3ea6cc88294",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1678180841402,
+			"name": "用户注册",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"name1\",\n\t\"credential\": \"xxx\",\n\t\"identityType\": \"PASSWORD\"\n}"
+		},
+		{
+			"id": "9a05abad-e7b6-81bb-610a-4b691856ab56",
+			"headers": "tenant-header: default\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "tenant-header",
+					"value": "default",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/gateway/account/loginBySso.json?uid=261698279016849473&parentUid=1564266258685674&cloudSource=ALIBABA&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJVU0VSX1JHc1BPSzJ4XzIwMjMwMzA3MTcyMDQzMCNQQVNTV09SRCNuYW1lMSMyMDIzLzAzLzE3MTg6MDI6NTMifQ.ylLpeFJGmc2A3kMg8fygS14b4LlowRyAULX1jl1vsRw",
+			"folder": "99882f71-8d15-026f-5f75-e5cd98dfe6c3",
+			"queryParams": [
+				{
+					"key": "uid",
+					"value": "261698279016849473",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "parentUid",
+					"value": "1564266258685674",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "cloudSource",
+					"value": "ALIBABA",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJVU0VSX1JHc1BPSzJ4XzIwMjMwMzA3MTcyMDQzMCNQQVNTV09SRCNuYW1lMSMyMDIzLzAzLzE3MTg6MDI6NTMifQ.ylLpeFJGmc2A3kMg8fygS14b4LlowRyAULX1jl1vsRw",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1679042036211,
+			"name": "SSO登录",
+			"description": "",
+			"collectionId": "6bba1dd3-cb3f-e4e8-db01-99336bdc676b",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"name2\",\n\t\"credential\": \"xxx1\",\n\t\"identityType\": \"PASSWORD\"\n}"
+		}
+	]
+}
