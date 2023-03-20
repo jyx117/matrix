@@ -1,6 +1,7 @@
 package com.cloud.matrix.core.model.account;
 
 import com.cloud.matrix.core.TenantBaseModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -12,4 +13,5 @@ public abstract class AccountBaseModel extends TenantBaseModel {
 
     /** 主账号uid */
     private String providerUid;
+
 }

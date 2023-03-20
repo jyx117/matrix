@@ -22,4 +22,8 @@ public interface AccountConfigDAO {
                                              @Param("providerUid") String providerUid,
                                              @Param("tenant") String tenant);
 
+    List<AccountConfigDO> selectByUidListAndKeys(@Param("uidList") List uidList,
+                                                 @Param("keys") List keys,
+                                                 @Param("tenant") String tenant);
+
 }

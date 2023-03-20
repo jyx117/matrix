@@ -28,4 +28,8 @@ public interface RamAccountDAO {
     List<RamAccountDO> selectByProviderUid(@Param("providerUid") String providerUid,
                                            @Param("tenant") String tenant);
 
+    List<RamAccountDO> selectByUidListAndProviderUid(@Param("list") List uidList,
+                                                     @Param("providerUid") String providerUid,
+                                                     @Param("tenant") String tenant);
+
 }

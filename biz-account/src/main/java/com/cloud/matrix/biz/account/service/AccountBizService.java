@@ -1,8 +1,8 @@
 package com.cloud.matrix.biz.account.service;
 
+import com.cloud.matrix.biz.account.controller.request.QueryAccountsRequest;
 import com.cloud.matrix.biz.account.model.Account;
-
-import java.util.List;
+import com.cloud.matrix.common.result.ListResult;
 
 /**
  * @author michael
@@ -10,5 +10,10 @@ import java.util.List;
  */
 public interface AccountBizService {
 
-    public List<Account> listMyAdminAccounts();
+    /**
+     * 查询我管理的子账号列表
+     * @param request
+     * @return
+     */
+    public ListResult<Account> listMyAdminAccounts(QueryAccountsRequest request);
 }

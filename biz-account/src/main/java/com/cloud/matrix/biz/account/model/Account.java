@@ -4,8 +4,10 @@ import com.cloud.matrix.core.model.account.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.beans.BeanCopier;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author michael
@@ -30,4 +32,14 @@ public class Account extends RamAccount {
 
     /** 使用者 */
     private List<AccountUser>   users;
+
+    /** 账号配置 */
+    private List<AccountConfig> configs;
+
+    public Account(RamAccount account) {
+        if (Objects.nonNull(account)) {
+            BeanCopier copier = BeanCopier.create(RamAccount.class, Account.class, false);
+            copier.copy(account, this, null);
+        }
+    }
 }

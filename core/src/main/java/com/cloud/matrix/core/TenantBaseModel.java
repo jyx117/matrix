@@ -11,4 +11,5 @@ import lombok.Data;
 public abstract class TenantBaseModel extends BaseModel {
 
     private String tenant;
+
 }

@@ -18,4 +18,6 @@ public interface RamAccountService {
     RamAccount getByUid(String uid, String providerUid);
 
     List<RamAccount> getByProviderUid(String providerUid);
+
+    List<RamAccount> getByUidListAndProviderUid(List uidList, String providerUid);
 }

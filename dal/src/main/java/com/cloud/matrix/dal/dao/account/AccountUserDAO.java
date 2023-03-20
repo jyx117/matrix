@@ -1,6 +1,7 @@
 package com.cloud.matrix.dal.dao.account;
 
 import java.util.List;
+import java.util.Map;
 import com.cloud.matrix.dal.model.account.AccountUserDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,5 +23,23 @@ public interface AccountUserDAO {
     List<AccountUserDO> selectByUserIdAndProviderUid(@Param("userId") String userId,
                                                      @Param("providerUid") String providerUid,
                                                      @Param("tenant") String tenant);
+
+    List<AccountUserDO> selectByUserId(@Param("userId") String userId,
+                                       @Param("tenant") String tenant,
+                                       @Param("pageNum") int pageNum,
+                                       @Param("pageSize") int pageSize);
+
+    List<AccountUserDO> selectByUserIdAndType(@Param("userId") String userId,
+                                              @Param("type") String type,
+                                              @Param("tenant") String tenant,
+                                              @Param("pageNum") int pageNum,
+                                              @Param("pageSize") int pageSize);
+
+    List<AccountUserDO> selectByCondition(Map map);
+
+    long selectCountByCondition(Map map);
+
+    List<AccountUserDO> selectByUidListAndType(@Param("list") List list, @Param("type") String type,
+                                               @Param("tenant") String tenant);
 
 }

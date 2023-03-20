@@ -5,7 +5,7 @@ import com.cloud.matrix.biz.access.controller.request.RegisterUserRequest;
 import com.cloud.matrix.biz.access.service.UserBizService;
 import com.cloud.matrix.common.enums.ErrorCode;
 import com.cloud.matrix.common.exception.BizException;
-import com.cloud.matrix.common.result.BaseResult;
+import com.cloud.matrix.common.result.DataResult;
 import com.cloud.matrix.core.enums.UserIdentityType;
 import com.cloud.matrix.util.CryptUtil;
 import com.cloud.matrix.util.StringUtil;
@@ -26,10 +26,10 @@ public class LoginController {
     private UserBizService userBizService;
 
     @PostMapping(value = "/gateway/access/register.json")
-    public BaseResult register(@RequestBody @Validated RegisterUserRequest request) {
+    public DataResult register(@RequestBody @Validated RegisterUserRequest request) {
         preCheck(request);
 
-        return BaseResult.success(userBizService.register(request));
+        return DataResult.success(userBizService.register(request));
     }
 
     private void preCheck(RegisterUserRequest request) {
@@ -51,7 +51,7 @@ public class LoginController {
     }
 
     @PostMapping(value = "/gateway/access/login.json")
-    public BaseResult passwordRegister(@RequestBody LoginRequest request) {
-        return BaseResult.success(userBizService.login(request));
+    public DataResult passwordRegister(@RequestBody LoginRequest request) {
+        return DataResult.success(userBizService.login(request));
     }
 }

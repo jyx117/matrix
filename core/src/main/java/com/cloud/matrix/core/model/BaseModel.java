@@ -1,7 +1,6 @@
 package com.cloud.matrix.core.model;
 
 import lombok.Data;
-
 import java.util.Date;
 
 /**

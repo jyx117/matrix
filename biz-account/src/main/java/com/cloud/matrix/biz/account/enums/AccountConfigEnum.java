@@ -19,6 +19,8 @@ public enum AccountConfigEnum {
 
     SSO_SAML_PRIVATE_KEY("SSO_SAML_PRIVATE_KEY", "sso登录私钥"),
 
+    ALLOW_LOGIN_CONSOLE("ALLOW_LOGIN_CONSOLE", "是否允许登录云控制台"),
+
     ;
 
     private String key;

@@ -34,8 +34,17 @@ public class AccountConfigServiceImpl implements AccountConfigService {
 
     @Override
     public List<AccountConfig> getByAccountUid(String accountUid, String providerUid) {
-        List<AccountConfigDO> dos = accountConfigDAO.selectByAccountUid(accountUid, providerUid,
-            CoreContext.getTenant());
+        return convertToList(
+            accountConfigDAO.selectByAccountUid(accountUid, providerUid, CoreContext.getTenant()));
+    }
+
+    @Override
+    public List<AccountConfig> getByUidListAndKeys(List uidList, List keys) {
+        return convertToList(
+            accountConfigDAO.selectByUidListAndKeys(uidList, keys, CoreContext.getTenant()));
+    }
+
+    private List<AccountConfig> convertToList(List<AccountConfigDO> dos) {
         return null == dos || dos.size() < 1 ? null : dos.stream().map(item -> {
             return Convertor.INSTANCE.convert2Model(item);
         }).collect(Collectors.toList());

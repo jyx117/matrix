@@ -46,8 +46,17 @@ public class RamAccountServiceImpl implements RamAccountService {
 
     @Override
     public List<RamAccount> getByProviderUid(String providerUid) {
-        List<RamAccountDO> dos = ramAccountDAO.selectByProviderUid(providerUid,
-            CoreContext.getTenant());
+        return convertToList(ramAccountDAO.selectByProviderUid(providerUid,
+            CoreContext.getTenant()));
+    }
+
+    @Override
+    public List<RamAccount> getByUidListAndProviderUid(List uidList, String providerUid) {
+        return convertToList(ramAccountDAO.selectByUidListAndProviderUid(uidList, providerUid,
+                CoreContext.getTenant()));
+    }
+
+    private List<RamAccount> convertToList(List<RamAccountDO> dos) {
         return null == dos || dos.size() < 1 ? null : dos.stream().map(item -> {
             return Convertor.INSTANCE.convert2Model(item);
         }).collect(Collectors.toList());

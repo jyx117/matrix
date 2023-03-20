@@ -31,6 +31,76 @@
           and tenant = #{tenant}
     </select>
 
+    <select id="selectByUserId" resultMap="baseSqlResult">
+        select *
+        from account_account_user
+        where 1 = 1
+          and user_id = #{userId}
+          and tenant = #{tenant} limit #{pageNum}
+            , #{pageSize}
+    </select>
+
+    <select id="selectByUserIdAndType" resultMap="baseSqlResult">
+        select *
+        from account_account_user
+        where 1 = 1
+          and user_id = #{userId}
+          and type = #{type}
+          and tenant = #{tenant} limit #{pageNum}
+            , #{pageSize}
+    </select>
+
+    <select id="selectByUidListAndType" resultMap="baseSqlResult">
+        select *
+        from account_account_user
+        where 1 = 1
+        and type = #{type}
+        and tenant = #{tenant}
+        and account_uid in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectByCondition" resultMap="baseSqlResult">
+        select *
+        from account_account_user
+        where tenant = #{tenant}
+        <if test="userId!=null and userId!=''">
+            and user_id = #{userId}
+        </if>
+        <if test="type!=null and type!=''">
+            and type = #{type}
+        </if>
+        <if test="account_uid!=null and account_uid!=''">
+            and account_uid = #{accountUid}
+        </if>
+        <if test="provider_uid!=null and provider_uid!=''">
+            and provider_uid = #{providerUid}
+        </if>
+        <if test="limitStart!=null and limitEnd!=null">
+            limit #{limitStart}, #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectCountByCondition" resultType="Long">
+        select COUNT(1)
+        from account_account_user
+        where tenant = #{tenant}
+        <if test="userId!=null and userId!=''">
+            and user_id = #{userId}
+        </if>
+        <if test="type!=null and type!=''">
+            and type = #{type}
+        </if>
+        <if test="account_uid!=null and account_uid!=''">
+            and account_uid = #{accountUid}
+        </if>
+        <if test="provider_uid!=null and provider_uid!=''">
+            and provider_uid = #{providerUid}
+        </if>
+    </select>
+
     <insert id="insert">
         <selectKey resultType="long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()

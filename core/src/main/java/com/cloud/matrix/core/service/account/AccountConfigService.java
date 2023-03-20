@@ -14,4 +14,7 @@ public interface AccountConfigService {
     AccountConfig getUnique(String accountUid, String providerUid, String k);
 
     List<AccountConfig> getByAccountUid(String accountUid, String providerUid);
+
+    List<AccountConfig> getByUidListAndKeys(List uidList, List keys);
+
 }
