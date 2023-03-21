@@ -1,6 +1,8 @@
 package com.cloud.matrix.biz.account.model;
 
+import com.cloud.matrix.biz.account.enums.AccountConfigEnum;
 import com.cloud.matrix.core.model.account.*;
+import com.cloud.matrix.util.StringUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,8 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Account extends RamAccount {
+
+    private Boolean             allowLoginConsole;
 
     /** 主账号信息 */
     private Provider            provider;
@@ -40,6 +44,21 @@ public class Account extends RamAccount {
         if (Objects.nonNull(account)) {
             BeanCopier copier = BeanCopier.create(RamAccount.class, Account.class, false);
             copier.copy(account, this, null);
+        }
+    }
+
+    public static void patchConfigInfo(Account account) {
+        if (null != account || null != account.getConfigs()) {
+            List<AccountConfig> configs = account.getConfigs();
+            for (AccountConfig config : configs) {
+                AccountConfigEnum configEnum = AccountConfigEnum.find(config.getK());
+                switch (configEnum) {
+                    case ALLOW_LOGIN_CONSOLE:
+                        account
+                            .setAllowLoginConsole(StringUtil.equalsIgnoreCase("1", config.getV()));
+                        break;
+                }
+            }
         }
     }
 }

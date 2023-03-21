@@ -8,7 +8,6 @@ import com.cloud.matrix.biz.account.model.SamlModel;
 import com.cloud.matrix.common.enums.ErrorCode;
 import com.cloud.matrix.common.exception.BizException;
 import com.cloud.matrix.core.CoreContext;
-import com.cloud.matrix.core.enums.CloudSourceType;
 import com.cloud.matrix.core.model.account.*;
 import com.cloud.matrix.core.service.account.*;
 import com.cloud.matrix.util.LogUtil;
@@ -19,12 +18,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.xml.security.Init;
 import org.joda.time.DateTime;
@@ -98,11 +95,10 @@ public class SsoBizServiceImpl implements SsoBizService {
     private AccountConfigService  accountConfigService;
 
     @Override
-    public void ssoLogin(String accountUid, String parentUid, String cloudSource,
-                         HttpServletResponse response) {
+    public void ssoLogin(String accountUid, String parentUid, HttpServletResponse response) {
         // 1. 前置检查
         RamAccount ramAccount = ramAccountService.getByUid(accountUid, parentUid);
-        preCheck(accountUid, parentUid, cloudSource, ramAccount);
+        preCheck(accountUid, parentUid, ramAccount);
 
         ProviderConfig providerConfig = providerConfigService.getUnique(parentUid,
             ProviderConfigEnum.SITE.getKey());
@@ -132,18 +128,21 @@ public class SsoBizServiceImpl implements SsoBizService {
         }
 
         // 6. 处理请求
-        handleResponse(responseUrl, relayState, ramAccount.getLoginName(), audienceUri, samlModel, response);
+        handleResponse(responseUrl, relayState, ramAccount.getLoginName(), audienceUri, samlModel,
+            response);
     }
 
-    private void preCheck(String accountUid, String providerUid, String cloudSource, RamAccount ramAccount) {
-        if (null == CloudSourceType.find(cloudSource)) {
-            throw new BizException(ErrorCode.BIZ_ACCOUNT_NO_SUPPORT_CLOUD_SOURCE, cloudSource);
-        }
-
+    private void preCheck(String accountUid, String providerUid, RamAccount ramAccount) {
         // 1. 主账号是否存在
-        Provider provider = providerService.getUnique(providerUid, cloudSource);
+        Provider provider = providerService.getUnique(providerUid);
         if (null == provider) {
             throw new BizException(ErrorCode.BIZ_ACCOUNT_PROVIDER_UID_NOT_EXIST, providerUid);
+        }
+
+        // 2. 云类型是否支持
+        if (null == provider.getCloudSource()) {
+            throw new BizException(ErrorCode.BIZ_ACCOUNT_NO_SUPPORT_CLOUD_SOURCE,
+                provider.getCloudSource().getType());
         }
 
         // 2. 子账号是否存在

@@ -10,5 +10,5 @@ public interface ProviderService {
 
     long add(Provider request);
 
-    Provider getUnique(String uid, String cloudSource);
+    Provider getUnique(String uid);
 }

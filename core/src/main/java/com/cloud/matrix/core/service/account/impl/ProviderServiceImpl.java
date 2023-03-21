@@ -24,8 +24,8 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
-    public Provider getUnique(String uid, String cloudSource) {
+    public Provider getUnique(String uid) {
         return Convertor.INSTANCE
-            .convert2Model(providerDAO.selectUnique(uid, cloudSource, CoreContext.getTenant()));
+            .convert2Model(providerDAO.selectUnique(uid, CoreContext.getTenant()));
     }
 }

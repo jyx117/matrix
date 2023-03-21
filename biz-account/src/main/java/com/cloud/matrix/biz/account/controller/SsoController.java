@@ -22,7 +22,6 @@ public class SsoController {
     @GetMapping(value = "/gateway/account/loginBySso.json")
     public void loginBySso(@Valid SsoLoginRequest request, HttpServletResponse response) {
 
-        ssoBizService.ssoLogin(request.getUid(), request.getParentUid(), request.getCloudSource(),
-            response);
+        ssoBizService.ssoLogin(request.getUid(), request.getParentUid(), response);
     }
 }

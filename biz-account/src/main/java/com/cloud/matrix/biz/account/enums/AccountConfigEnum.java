@@ -1,5 +1,6 @@
 package com.cloud.matrix.biz.account.enums;
 
+import com.cloud.matrix.util.StringUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -25,4 +26,13 @@ public enum AccountConfigEnum {
 
     private String key;
     private String desc;
+
+    public static AccountConfigEnum find(String key) {
+        for (AccountConfigEnum item : values()) {
+            if (StringUtil.equalsIgnoreCase(key, item.name())) {
+                return item;
+            }
+        }
+        return null;
+    }
 }

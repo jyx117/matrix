@@ -16,7 +16,6 @@
         from account_provider
         where 1 = 1
           and uid = #{uid}
-          and cloud_source = #{cloudSource}
           and tenant = #{tenant}
     </select>
 

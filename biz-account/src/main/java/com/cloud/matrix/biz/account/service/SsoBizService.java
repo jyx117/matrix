@@ -12,8 +12,7 @@ public interface SsoBizService {
      * SSO方式登录
      * @param accountUid
      * @param parentUid
-     * @param cloudSource
      * @param response
      */
-    public void ssoLogin(String accountUid, String parentUid, String cloudSource, HttpServletResponse response);
+    public void ssoLogin(String accountUid, String parentUid, HttpServletResponse response);
 }

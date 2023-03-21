@@ -64,6 +64,7 @@ public class AccountBizServiceImpl implements AccountBizService {
 
         // 4. 获取账号配置信息
         patchAccountConfigs(accounts);
+
         return result;
     }
 
@@ -116,6 +117,9 @@ public class AccountBizServiceImpl implements AccountBizService {
                     break;
                 }
             }
+        }
+        for (Account account : accounts) {
+            Account.patchConfigInfo(account);
         }
     }
 

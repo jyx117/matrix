@@ -13,7 +13,6 @@ public interface ProviderDAO {
 
     long insert(ProviderDO request);
 
-    ProviderDO selectUnique(@Param("uid") String uid, @Param("cloudSource") String cloudSource,
-                            @Param("tenant") String tenant);
+    ProviderDO selectUnique(@Param("uid") String uid, @Param("tenant") String tenant);
 
 }
