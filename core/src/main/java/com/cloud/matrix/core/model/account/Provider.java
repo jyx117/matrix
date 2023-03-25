@@ -1,7 +1,6 @@
 package com.cloud.matrix.core.model.account;
 
 import com.cloud.matrix.core.TenantBaseModel;
-import com.cloud.matrix.core.enums.CloudSourceType;
 import lombok.Data;
 
 /**
@@ -11,10 +10,10 @@ import lombok.Data;
 @Data
 public class Provider extends TenantBaseModel {
 
-    private String          uid;
+    private String uid;
 
-    private String          name;
+    private String name;
 
-    private CloudSourceType cloudSource;
+    private String cloudSource;
 
 }

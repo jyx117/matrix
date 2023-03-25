@@ -53,15 +53,11 @@
 
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-account</artifactId>
+            <artifactId>web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-access</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cloud.matrix</groupId>
-            <artifactId>biz-tenant</artifactId>
+            <artifactId>common-service-facade</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cloud.matrix</groupId>
@@ -84,6 +80,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <compilerArguments>
+                        <arg>--add-exports=java.base/sun.security.util=ALL-UNNAMED</arg>
+                    </compilerArguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>

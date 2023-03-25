@@ -1,6 +1,5 @@
 package com.cloud.matrix.core.model.account;
 
-import com.cloud.matrix.core.enums.AccountUserType;
 import lombok.Data;
 
 /**
@@ -10,9 +9,9 @@ import lombok.Data;
 @Data
 public class AccountUser extends AccountBaseModel {
 
-    private String          accountUid;
+    private String accountUid;
 
-    private String          userId;
+    private String userId;
 
-    private AccountUserType type;
+    private String type;
 }

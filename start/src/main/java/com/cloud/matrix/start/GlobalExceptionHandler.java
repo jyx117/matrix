@@ -3,7 +3,7 @@ package com.cloud.matrix.start;
 import com.cloud.matrix.common.enums.ErrorCode;
 import com.cloud.matrix.common.exception.BizException;
 import com.cloud.matrix.common.exception.SystemException;
-import com.cloud.matrix.common.result.BaseResult;
+import com.cloud.matrix.service.result.BaseResult;
 import com.cloud.matrix.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 import java.util.Objects;

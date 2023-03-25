@@ -12,7 +12,7 @@ CREATE TABLE `account_provider`
     `gmt_create`   timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `gmt_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     PRIMARY KEY (`id`),
-    UNIQUE KEY `uk_uid_cs_tenant` (`uid`, `cloud_source`, `tenant`)
+    UNIQUE KEY `uk_uid_tenant` (`uid`, `tenant`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='主账号表'
 ;
 

@@ -28,7 +28,7 @@ public class RamAccount extends AccountBaseModel {
     private String comment;
 
     /** 账号创建时间 */
-    private Date createTime;
+    private Date   createTime;
 
     /** 电话 */
     private String phone;

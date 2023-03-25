@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.cloud.matrix</groupId>
-    <artifactId>util</artifactId>
+    <artifactId>common-service-facade</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>util</name>
-    <description>util</description>
+    <name>common-service-facade</name>
+    <description>common-service-facade</description>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -31,27 +31,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
-        <!-- opensaml -->
+        <!-- valid -->
         <dependency>
-            <groupId>org.opensaml</groupId>
-            <artifactId>opensaml</artifactId>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
         </dependency>
-        <!-- jwt -->
+        <!-- lombok -->
         <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-        </dependency>
-        <!-- security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
-
 </project>

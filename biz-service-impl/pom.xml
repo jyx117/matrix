@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.cloud.matrix</groupId>
-    <artifactId>util</artifactId>
+    <artifactId>biz-service-impl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>util</name>
-    <description>util</description>
+    <name>biz-service-impl</name>
+    <description>biz-service-impl</description>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -33,24 +33,41 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- opensaml -->
         <dependency>
-            <groupId>org.opensaml</groupId>
-            <artifactId>opensaml</artifactId>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>common-service-facade</artifactId>
         </dependency>
-        <!-- jwt -->
         <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>core</artifactId>
         </dependency>
-        <!-- security -->
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.matrix</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

@@ -23,14 +23,14 @@
     </properties>
 
     <modules>
+        <module>web</module>
+        <module>biz-service-impl</module>
+        <module>common-service-facade</module>
         <module>start</module>
-        <module>biz-tenant</module>
-        <module>biz-access</module>
         <module>common</module>
         <module>util</module>
         <module>core</module>
         <module>dal</module>
-        <module>biz-account</module>
     </modules>
 
     <dependencyManagement>
@@ -44,22 +44,22 @@
             <!-- 子模块start -->
             <dependency>
                 <groupId>com.cloud.matrix</groupId>
+                <artifactId>web</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cloud.matrix</groupId>
+                <artifactId>biz-service-impl</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cloud.matrix</groupId>
+                <artifactId>common-service-facade</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cloud.matrix</groupId>
                 <artifactId>start</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.cloud.matrix</groupId>
-                <artifactId>biz-tenant</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.cloud.matrix</groupId>
-                <artifactId>biz-access</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.cloud.matrix</groupId>
-                <artifactId>biz-account</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
