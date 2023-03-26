@@ -95,6 +95,15 @@ public class SystemException extends RuntimeException {
     }
 
     /**
+     * @param errorCode ErrorCode
+     * @param cause     错误原因
+     */
+    public SystemException(ErrorCode errorCode, Throwable cause) {
+        super(errorCode.getMessage(), cause);
+        this.code = errorCode.getCode();
+    }
+
+    /**
      * 获取错误码
      *
      * @return 错误码

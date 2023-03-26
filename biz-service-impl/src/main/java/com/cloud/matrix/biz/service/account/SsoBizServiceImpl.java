@@ -76,7 +76,7 @@ public class SsoBizServiceImpl implements SsoBizService {
     // 现在无用
     private static final String   RESPONSE_ID   = null;
     private static final String   TEMPLATE_PATH = "/templates/saml2-post-binding.vm";
-    private static final String   ENTITY_ID     = "https://cloudmatrix.alibaba-inc.com/accounts/idp/sso";
+    private static final String   ENTITY_ID     = "https://paas.cmatrix.net/accounts/idp/ssoEntity";
 
     @Autowired
     private AccountUserService    accountUserService;

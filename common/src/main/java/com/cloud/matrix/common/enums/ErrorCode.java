@@ -19,6 +19,8 @@ public enum ErrorCode {
 
     /** 系统异常start */
     SYSTEM_COMMON_EXCEPTION("SYS_0001", "系统通用异常"),
+
+    SYSTEM_BUILD_ACS_CLIENT_EXCEPTION("SYS_0010", "创建acs client异常"),
     /** 系统异常end */
 
     /** 业务异常start */

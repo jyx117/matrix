@@ -23,10 +23,10 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
         // 2. 租户拦截器，设置用户请求的租户，返回true
         registry.addInterceptor(tenantInterceptor).addPathPatterns("/**").excludePathPatterns("/",
             "/index", "/index.htm", "/index.hml", "/css/**", "/js/**",
-            "/gateway/access/register.json", "/gateway/access/login.json");
+            "/gateway/access/register.json", "/gateway/access/login.json", "/gateway/account/testList.json");
         // 3. auth拦截器，检查用户是否登录，返回true or false
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns(
             "/gateway/login.json", "/css/**", "/js/**", "/gateway/access/register.json",
-            "/gateway/access/login.json");
+            "/gateway/access/login.json", "/gateway/account/testList.json");
     }
 }
