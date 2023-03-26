@@ -1,4 +1,4 @@
-package com.cloud.matrix.common.client.alibaba;
+package com.cloud.matrix.common.client;
 
 import org.springframework.stereotype.Service;
 

@@ -84,7 +84,7 @@
             </dependency>
             <!-- 子模块end -->
 
-            <!-- 阿里云sdk -->
+            <!-- 阿里云sdk start -->
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>ram20150501</artifactId>
@@ -100,8 +100,28 @@
                 <artifactId>aliyun-java-sdk-core</artifactId>
                 <version>4.6.0</version>
             </dependency>
+            <!-- 阿里云sdk end -->
+
+            <!-- 腾讯云sdk start -->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java-cam</artifactId>
+                <version>3.1.722</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>3.1.322</version>
+            </dependency>
+            <!-- 腾讯云sdk end -->
 
             <!-- 基础依赖start -->
+            <!-- okio -->
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>3.2.0</version>
+            </dependency>
             <!-- opensaml -->
             <dependency>
                 <groupId>org.opensaml</groupId>

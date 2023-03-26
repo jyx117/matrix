@@ -11,15 +11,22 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Product {
 
+    /** 阿里云产品start */
     ALIBABA_RAM(CloudType.ALIBABA, "RAM", "访问控制"),
 
     ALIBABA_ECS(CloudType.ALIBABA, "ECS", "云服务器ECS"),
+    /** 阿里云产品end */
+
+    /** 腾讯云产品start */
+    TENCENT_CAM(CloudType.TENANT, "CAM", "访问管理"),
+
+    /** 腾讯云产品end */
 
     ;
 
-    private CloudType cloudType;
+    private CloudType  cloudType;
 
-    private String    code;
+    private String     code;
 
-    private String    name;
+    private String     name;
 }

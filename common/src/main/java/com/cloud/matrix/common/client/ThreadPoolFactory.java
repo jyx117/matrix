@@ -45,6 +45,8 @@ public class ThreadPoolFactory implements InitializingBean {
     public enum PoolName {
         ALIBABA_LIST_INSTANCES,
 
+        TENCENT_LIST_INSTANCES,
+
         ;
     }
 }

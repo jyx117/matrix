@@ -1,24 +1,26 @@
-package com.cloud.matrix.common.client.alibaba.strategy.ram;
+package com.cloud.matrix.common.client.strategy.alibaba.ram;
 
+import com.aliyun.ram20150501.Client;
+import com.aliyun.ram20150501.models.ListUsersRequest;
+import com.aliyun.ram20150501.models.ListUsersResponse;
+import com.aliyun.ram20150501.models.ListUsersResponseBody;
+import com.aliyun.teaopenapi.models.Config;
+import com.cloud.matrix.common.client.AcsFactory;
+import com.cloud.matrix.common.client.BaseAcsStrategy;
+import com.cloud.matrix.common.client.enums.Api;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import com.aliyun.ram20150501.models.*;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
-import com.aliyun.ram20150501.Client;
-import com.aliyun.teaopenapi.models.Config;
-import com.cloud.matrix.common.client.alibaba.AcsFactory;
-import com.cloud.matrix.common.client.alibaba.BaseAcsStrategy;
-import com.cloud.matrix.common.client.enums.Api;
 
 /**
  * @author michael
  * @version $ID: ListUsers.java, v0.1 2023-03-26 15:58 michael Exp
  */
-@Component("ALIBABA_RAM_LIST_GROUPS")
-public class ListGroups extends BaseAcsStrategy implements InitializingBean {
+@Component("ALIBABA_RAM_LIST_USERS")
+public class ListUsers extends BaseAcsStrategy implements InitializingBean {
 
     private static final List<String> REGIONS = new ArrayList<>(Arrays.asList("ram.aliyuncs.com"));
 
@@ -30,17 +32,15 @@ public class ListGroups extends BaseAcsStrategy implements InitializingBean {
     @Override
     public List listRegionData(Object client, Map param) {
         Client c = (Client) client;
+        ListUsersRequest request = new ListUsersRequest();
         String marker = null;
-        int maxItems = 1000;
-        ListGroupsRequest request = new ListGroupsRequest();
-        request.setMaxItems(maxItems);
-        List<ListGroupsResponseBody.ListGroupsResponseBodyGroupsGroup> users = new ArrayList<>();
+        List<ListUsersResponseBody.ListUsersResponseBodyUsersUser> users = new ArrayList<>();
         while (true) {
             try {
-                ListGroupsResponse response = c.listGroups(request);
-                ListGroupsResponseBody body = response.getBody();
-                if (null != body && null != body.groups && null != body.groups.group) {
-                    users.addAll(body.groups.group);
+                ListUsersResponse response = c.listUsers(request);
+                ListUsersResponseBody body = response.getBody();
+                if (null != body && null != body.users && null != body.users.user) {
+                    users.addAll(body.users.user);
                 }
                 if (null == body || null == body.isTruncated || !body.isTruncated) {
                     break;
@@ -63,6 +63,6 @@ public class ListGroups extends BaseAcsStrategy implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        AcsFactory.register(Api.ALIBABA_RAM_LIST_GROUPS, this);
+        AcsFactory.register(Api.ALIBABA_RAM_LIST_USERS, this);
     }
 }

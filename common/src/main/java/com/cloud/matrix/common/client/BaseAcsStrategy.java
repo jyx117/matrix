@@ -1,11 +1,12 @@
-package com.cloud.matrix.common.client.alibaba;
+package com.cloud.matrix.common.client;
 
-import com.cloud.matrix.common.client.ThreadPoolFactory;
 import com.cloud.matrix.common.enums.ErrorCode;
 import com.cloud.matrix.common.exception.SystemException;
+import com.cloud.matrix.util.LogUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @version $ID: BaseAcsStrategy.java, v0.1 2023-03-26 15:15 michael Exp
  */
 public abstract class BaseAcsStrategy implements AcsStrategy {
+
+    private static final Logger logger  = LoggerFactory.getLogger(BaseAcsStrategy.class);
 
     protected static final ThreadPoolExecutor POOL = ThreadPoolFactory
         .getExecutor(ThreadPoolFactory.PoolName.ALIBABA_LIST_INSTANCES);
@@ -55,7 +58,7 @@ public abstract class BaseAcsStrategy implements AcsStrategy {
                     response.addAll(items);
                 }
             } catch (Exception e) {
-                continue;
+                LogUtil.error(logger, e);
             }
         }
 
