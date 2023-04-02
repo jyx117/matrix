@@ -1,5 +1,6 @@
 package com.cloud.matrix.web.controller.account;
 
+import com.cloud.matrix.biz.service.account.TencentLogin;
 import com.cloud.matrix.common.client.AcsFactory;
 import com.cloud.matrix.common.client.enums.Api;
 import com.cloud.matrix.service.api.account.AccountBizService;
@@ -23,9 +24,17 @@ public class AccountController {
     @Autowired
     private AccountBizService accountBizService;
 
+    @Autowired
+    private TencentLogin      tencentLogin;
+
     @PostMapping(value = "/gateway/account/listMyAdminAccounts.json")
     public ListResult listMyAdminAccounts(@Validated QueryAccountsRequest request,
                                           HttpServletResponse response) {
         return accountBizService.listMyAdminAccounts(request);
+    }
+
+    @GetMapping(value = "/gateway/account/testList.json")
+    public void testList(HttpServletResponse response) {
+        tencentLogin.tencentLogin(null, null, response);
     }
 }

@@ -42,9 +42,9 @@ public class OpenSAMLUtils {
     static final String                    PEM_RSA_PRIVATE_START = "-----BEGIN RSA PRIVATE KEY-----";
     static final String                    PEM_RSA_PRIVATE_END   = "-----END RSA PRIVATE KEY-----";
 
-    private static   XMLObjectBuilderFactory builderFactory = null;
-    protected static MarshallerFactory       marshallerFactory;
-    private static   VelocityEngine          velocityEngine = null;
+    private static XMLObjectBuilderFactory builderFactory        = null;
+    protected static MarshallerFactory     marshallerFactory;
+    private static VelocityEngine          velocityEngine        = null;
     static {
         try {
             DefaultBootstrap.bootstrap(); // saml必需的初始化，否则后面构建对象会出现nullpointer
@@ -59,9 +59,9 @@ public class OpenSAMLUtils {
         T object = null;
         try {
             QName defaultElementName = (QName) clazz.getDeclaredField("DEFAULT_ELEMENT_NAME")
-                    .get(null);
+                .get(null);
             object = (T) builderFactory.getBuilder(defaultElementName)
-                    .buildObject(defaultElementName);
+                .buildObject(defaultElementName);
         } catch (IllegalAccessException e) {
             throw new IllegalArgumentException("Could not create SAML object");
 
@@ -80,6 +80,10 @@ public class OpenSAMLUtils {
         return UUID.randomUUID().toString();
     }
 
+    public static String getTencentRandomId(String parentId, String accountUid) {
+        return IdGenerateUtil.generateTencentSsoId(parentId, accountUid);
+    }
+
     public static VelocityEngine getVelocityEngine() {
         if (velocityEngine == null) {
             velocityEngine = new VelocityEngine();
@@ -87,7 +91,7 @@ public class OpenSAMLUtils {
             velocityEngine.setProperty(RuntimeConstants.OUTPUT_ENCODING, "UTF-8");
             velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
             velocityEngine.setProperty("classpath.resource.loader.class",
-                    "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+                "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
             velocityEngine.init();
         }
         return velocityEngine;
@@ -106,9 +110,9 @@ public class OpenSAMLUtils {
     }
 
     public static X509Certificate parsePublicKey(String publicKeyStr) throws IOException,
-            CertificateException {
+                                                                      CertificateException {
         InputStream inStream = new ByteArrayInputStream(
-                Base64.getMimeDecoder().decode(publicKeyStr));
+            Base64.getMimeDecoder().decode(publicKeyStr));
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
         try {
             return (X509Certificate) cf.generateCertificate(inStream);
@@ -118,10 +122,10 @@ public class OpenSAMLUtils {
     }
 
     public static PrivateKey getPrivateKey(String privateKeyPem) throws GeneralSecurityException,
-            IOException {
+                                                                 IOException {
         if (privateKeyPem.indexOf(PEM_PRIVATE_START) != -1) { // PKCS#8 format
             privateKeyPem = privateKeyPem.replace(PEM_PRIVATE_START, "").replace(PEM_PRIVATE_END,
-                    "");
+                "");
             privateKeyPem = privateKeyPem.replaceAll("\\s", "");
 
             byte[] pkcs8EncodedKey = Base64.getDecoder().decode(privateKeyPem);
@@ -132,11 +136,11 @@ public class OpenSAMLUtils {
             // format
 
             privateKeyPem = privateKeyPem.replace(PEM_RSA_PRIVATE_START, "")
-                    .replace(PEM_RSA_PRIVATE_END, "");
+                .replace(PEM_RSA_PRIVATE_END, "");
             privateKeyPem = privateKeyPem.replaceAll("\\s", "");
 
             DerInputStream derReader = new DerInputStream(
-                    Base64.getDecoder().decode(privateKeyPem));
+                Base64.getDecoder().decode(privateKeyPem));
 
             DerValue[] seq = derReader.getSequence(0);
 
@@ -154,7 +158,7 @@ public class OpenSAMLUtils {
             BigInteger crtCoef = seq[8].getBigInteger();
 
             RSAPrivateCrtKeySpec keySpec = new RSAPrivateCrtKeySpec(modulus, publicExp, privateExp,
-                    prime1, prime2, exp1, exp2, crtCoef);
+                prime1, prime2, exp1, exp2, crtCoef);
             KeyFactory factory = KeyFactory.getInstance("RSA");
             return factory.generatePrivate(keySpec);
         }

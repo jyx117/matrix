@@ -15,4 +15,6 @@ public interface SsoBizService {
      * @param response
      */
     public void ssoLogin(String accountUid, String parentUid, HttpServletResponse response);
+
+    public void tencentLogin(String accountUid, String parentUid, HttpServletResponse response);
 }

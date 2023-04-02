@@ -38,6 +38,21 @@ public class IdGenerateUtil {
      * 生产user表id
      * @return
      */
+    public static String generateTencentSsoId(String parentId, String accountUid) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("tencent");
+        builder.append("_");
+        builder.append(parentId);
+        builder.append("_");
+        builder.append(accountUid);
+        builder.append("_");
+        return generateId(builder.toString());
+    }
+
+    /**
+     * 生产user表id
+     * @return
+     */
     public static String generateUserId() {
         return generateId(USER_PASSWORD_PREFIX);
     }

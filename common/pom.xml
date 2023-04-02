@@ -73,6 +73,11 @@
 		</dependency>
 		<!-- 腾讯云sdk end -->
 
+		<!-- xxljob -->
+		<dependency>
+			<groupId>com.xuxueli</groupId>
+			<artifactId>xxl-job-core</artifactId>
+		</dependency>
 		<!-- okio -->
 		<dependency>
 			<groupId>com.squareup.okio</groupId>
