@@ -1,5 +1,7 @@
 package com.cloud.matrix.common.client;
 
+import com.cloud.matrix.common.client.enums.Api;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,5 +11,5 @@ import java.util.Map;
  */
 public interface AcsClient {
 
-    List listInstances(String ak, String sk, List<String> regions, Map param);
+    List listInstances(Api api, String ak, String sk, List<String> regions, Map param);
 }

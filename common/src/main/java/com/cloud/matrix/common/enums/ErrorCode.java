@@ -21,6 +21,8 @@ public enum ErrorCode {
     SYSTEM_COMMON_EXCEPTION("SYS_0001", "系统通用异常"),
 
     SYSTEM_BUILD_ACS_CLIENT_EXCEPTION("SYS_0010", "创建acs client异常"),
+
+    SYSTEM_NO_ACS_STRATEGY("SYS_0011", "没有对应的acs策略"),
     /** 系统异常end */
 
     /** 业务异常start */

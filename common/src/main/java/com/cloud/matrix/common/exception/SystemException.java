@@ -10,13 +10,15 @@ import lombok.Getter;
 @Getter
 public class SystemException extends RuntimeException {
 
-    private static final long serialVersionUID = 8312907182931723379L;
+    private static final long   serialVersionUID = 8312907182931723379L;
+
+    private static final String EXP              = ",";
 
     // 错误码
-    private String            code;
+    private String              code;
 
     // 业务上下文信息
-    private String            bizMsg;
+    private String              bizMsg;
 
     /**
      * 构造一个没有错误信息的 <code>SystemException</code>
@@ -101,6 +103,35 @@ public class SystemException extends RuntimeException {
     public SystemException(ErrorCode errorCode, Throwable cause) {
         super(errorCode.getMessage(), cause);
         this.code = errorCode.getCode();
+    }
+
+    /**
+     * @param errorCode    错误码
+\     * @param cause   错误原因
+     */
+    public SystemException(ErrorCode errorCode, Throwable cause, String... bizInfos) {
+        super(errorCode.getMessage(), cause);
+        this.code = errorCode.getCode();
+        StringBuilder builder = new StringBuilder();
+        for (String info : bizInfos) {
+            builder.append(info);
+            builder.append(EXP);
+        }
+        this.bizMsg = builder.toString();
+    }
+
+    /**
+     * @param errorCode    错误码
+     */
+    public SystemException(ErrorCode errorCode, String... bizInfos) {
+        super(errorCode.getMessage());
+        this.code = errorCode.getCode();
+        StringBuilder builder = new StringBuilder();
+        for (String info : bizInfos) {
+            builder.append(info);
+            builder.append(EXP);
+        }
+        this.bizMsg = builder.toString();
     }
 
     /**

@@ -14,6 +14,8 @@ public enum Product {
     /** 阿里云产品start */
     ALIBABA_RAM(CloudType.ALIBABA, "RAM", "访问控制"),
 
+    ALIBABA_RG(CloudType.ALIBABA, "RG", "资源管理"),
+
     ALIBABA_ECS(CloudType.ALIBABA, "ECS", "云服务器ECS"),
     /** 阿里云产品end */
 

@@ -45,6 +45,14 @@
 		<!-- 阿里云sdk -->
 		<dependency>
 			<groupId>com.aliyun</groupId>
+			<artifactId>resourcemanager20200331</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>ims20190815</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun</groupId>
 			<artifactId>ram20150501</artifactId>
 		</dependency>
 		<dependency>
@@ -73,6 +81,22 @@
 		</dependency>
 		<!-- 腾讯云sdk end -->
 
+		<!-- powermock -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- xxljob -->
 		<dependency>
 			<groupId>com.xuxueli</groupId>
